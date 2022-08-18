@@ -2,20 +2,21 @@
   <div id="carcon" @click="lol">
     <slot></slot>
   </div>
-
-  <div id="scroller" @click="clickedOuter">
-    <div
-      id="scroller_innen"
-      @mousedown="md = true"
-      @mouseup="md = false"
-      @mouseleave="mouseleave"
-      @mousemove="clickedInner"
-    ></div>
+  <div id="scrollerOut">
+    <div id="scroller" @click="clickedOuter">
+      <div
+        id="scroller_innen"
+        @mousedown="md = true"
+        @mouseup="md = false"
+        @mouseleave="md = false"
+        @mousemove="clickedInner"
+      ></div>
+    </div>
   </div>
-  <p>{{ loller }}</p>
-  <button @click="scrollLeft">-></button>
-  <button @click="scrollRight">-></button>
-  <h1>{{ md }}</h1>
+  <!-- <p>{{ loller }}</p> -->
+  <!-- <button @click="scrollLeft">-></button>
+  <button @click="scrollRight">-></button> -->
+  <!-- <h1>{{ md }}</h1> -->
 
   <div>
     {{ test1 }}
@@ -107,17 +108,23 @@ export default {
   overflow-y: hidden;
   white-space: nowrap;
 }
+#scrollerOut {
+  margin: 20px;
+
+  height: 60px;
+  width: 800px;
+}
 #scroller {
   border-radius: 5px;
-  margin: 20px;
+  margin: 0px;
   height: 2px;
   width: 800px;
   background-color: whitesmoke;
   transition: 0.5s;
 }
-#scroller:hover {
+#scrollerOut:hover #scroller {
   border-radius: 15px;
-  margin: 20px;
+  margin: 0px;
   height: 30px;
   width: 800px;
   background-color: whitesmoke;
